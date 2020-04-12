@@ -4,7 +4,8 @@
   "description": "serverless mensageo backend",
   "main": "serverless deploy",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "getdoc": "serverless downloadDocumentation --outputFileName=documentation/swagger.yaml"
   },
   "author": "mensageo",
   "license": "MIT",
