@@ -10,7 +10,8 @@ exports.up = (knex, Promise) => knex.schema.createTable(`centerType`, t => {
         t.string('description').notNullable()
 
     }).createTable(`region`, t => {
-        t.increments('id').unsigned().primary()
+        //t.increments('id').unsigned().primary()
+        t.string('nutsCode').primary()
         t.integer('createdAt').nullable()
         t.integer('updatedAt').nullable()
 
@@ -18,7 +19,7 @@ exports.up = (knex, Promise) => knex.schema.createTable(`centerType`, t => {
         t.string('province').nullable()
         t.string('location').nullable()
         t.string('postalCode').notNullable()
-        t.string('nustCode').notNullable()
+        
 
     }).createTable(`categoryType`, t => {
         t.increments('id').unsigned().primary()

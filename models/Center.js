@@ -8,6 +8,7 @@ module.exports = class Center extends BaseModel {
   
     static get relationMappings() {
       const CenterType = require('./CenterType');
+      const Region = require('./Region');
 
       return {
         campaign: {
@@ -18,6 +19,14 @@ module.exports = class Center extends BaseModel {
               to: `${CenterType.tableName}.id`
             }
           },
+        location: {
+          relation: BaseModel.HasOneRelation,
+          modelClass: Region,
+          join: {
+            from: `${this.tableName}.idRegion`,
+            to: `${Region.tableName}.nutsCode`
+          }
+        },
     }
   }
   static get jsonSchema () {
