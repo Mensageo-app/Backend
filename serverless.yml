@@ -31,6 +31,15 @@ provider:
     - { name: "${self:service}-${env:STAGE}-default",
         value: "${env:STATICAPIBEARER}" }
 
+  # usagePlan:
+  #   quota:
+  #     limit: 10000
+  #     offset: 2
+  #     period: MONTH
+  #   throttle:
+  #     burstLimit: 200
+  #     rateLimit: 100
+
 custom:
   localstack:
     endpointFile: ./localstack.json
