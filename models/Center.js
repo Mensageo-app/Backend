@@ -33,8 +33,7 @@ module.exports = class Center extends BaseModel {
 
         codCNH:                  {type: 'string', minLength: 1, maxLength: 255},
         name:                    {type: 'string', minLength: 1, maxLength: 255},
-        region:                  {type: 'string', minLength: 1, maxLength: 255},
-        postalCode:              {type: 'string', minLength: 1, maxLength: 255},
+        idRegion:                {type: 'string', minLength: 1, maxLength: 255},
         phone:                   {type: 'string', minLength: 1, maxLength: 255},
         fax:                     {type: 'string', minLength: 1, maxLength: 255},
         beds:                    {type: 'integer'},

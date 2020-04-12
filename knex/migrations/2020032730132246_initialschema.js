@@ -36,8 +36,7 @@ exports.up = (knex, Promise) => knex.schema.createTable(`centerType`, t => {
 
         t.string('codCNH').notNullable().unique()
         t.string('name').notNullable()
-        t.string('region').notNullable().references(`region.nutsCode`) // ¿or ID?
-        t.string('postalCode').notNullable()
+        t.string('idRegion').notNullable().references(`region.nutsCode`) // ¿or ID?
         t.string('phone').notNullable()
         t.string('fax').nullable()
         t.integer('beds').nullable()
@@ -47,11 +46,22 @@ exports.up = (knex, Promise) => knex.schema.createTable(`centerType`, t => {
         t.string('lat').nullable()
         t.string('lon').nullable()
 
+    }).createTable(`resources`, t => {
+        t.increments('id').unsigned().primary()
+        t.integer('createdAt').nullable()
+        t.integer('updatedAt').nullable()
+
+        t.string('name').notNullable().unique()
+        t.string('description').nullable()
+        t.string('img').nullable()
+        t.string('idCategory').notNullable().references(`categoryType.id`)
+        t.string('approved').nullable()
     })
 
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTable(`center`)
+  return knex.schema.dropTable(`resources`)
+                    .dropTable(`center`)
                     .dropTable(`region`)
                     .dropTable('categoryType')
                     .dropTable(`centerType`)
