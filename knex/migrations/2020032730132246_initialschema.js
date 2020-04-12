@@ -17,8 +17,8 @@ exports.up = (knex, Promise) => knex.schema.createTable(`centerType`, t => {
         t.string('ca').notNullable()
         t.string('province').nullable()
         t.string('location').nullable()
-        t.string('postalCode').nullable()
-        t.string('nustCode').nullable()
+        t.string('postalCode').notNullable()
+        t.string('nustCode').notNullable()
 
     }).createTable(`center`, t => {
         t.increments('id').unsigned().primary()
@@ -26,10 +26,10 @@ exports.up = (knex, Promise) => knex.schema.createTable(`centerType`, t => {
         t.integer('updatedAt').nullable()
 
         t.string('codCNH').notNullable().unique()
-        t.string('name').nullable()
-        t.string('region').notNullable()
-        t.string('postalCode').nullable()
-        t.string('phone').nullable()
+        t.string('name').notNullable()
+        t.string('region').notNullable().references(`region.nutsCode`) // ¿or ID?
+        t.string('postalCode').notNullable()
+        t.string('phone').notNullable()
         t.string('fax').nullable()
         t.integer('beds').nullable()
         t.integer('type').nullable().references(`centerType.id`)

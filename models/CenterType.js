@@ -10,7 +10,7 @@ module.exports = class CenterType extends BaseModel {
   static get jsonSchema () {
     return {
       type: 'object',
-      // required: [],
+      required: ['name','description'],
 
       properties: {
         id:                      {type: 'integer'},
