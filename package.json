@@ -1,0 +1,13 @@
+{
+  "name": "mensageo_backend",
+  "version": "0.0.1",
+  "description": "serverless mensageo backend",
+  "main": "serverless deploy",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jancorg",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {}
+}
