@@ -26,6 +26,10 @@ provider:
   environment:
     STAGE: ${env:STAGE}
 
+  apiKeys:
+    - { name: "${self:service}-${env:STAGE}-api-key" }
+    - { name: "${self:service}-${env:STAGE}-default",
+        value: "${env:STATICAPIBEARER}" }
 
 custom:
   localstack:
