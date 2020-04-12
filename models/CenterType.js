@@ -1,9 +1,9 @@
 const BaseModel = require('./BaseModel')
 
 
-module.exports = class HospitalType extends BaseModel {
+module.exports = class CenterType extends BaseModel {
     static get tableName() {
-      return `hospitalType`
+      return `centerType`
     }
   
 
@@ -18,9 +18,8 @@ module.exports = class HospitalType extends BaseModel {
         createdAt:               {type: 'integer'},
         updatedAt:               {type: 'integer'},
 
-        property:                {type: 'string', minLength: 1, maxLength: 255},
-        purpouse:                {type: 'string', minLength: 1, maxLength: 255},
-        functionalUnit:          {type: 'string', minLength: 1, maxLength: 255},
+        name:                {type: 'string', minLength: 1, maxLength: 255},
+        description:         {type: 'string', minLength: 1, maxLength: 255},
         }
       }
     }
