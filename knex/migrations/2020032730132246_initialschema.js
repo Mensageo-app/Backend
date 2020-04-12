@@ -20,6 +20,15 @@ exports.up = (knex, Promise) => knex.schema.createTable(`centerType`, t => {
         t.string('postalCode').notNullable()
         t.string('nustCode').notNullable()
 
+    }).createTable(`categoryType`, t => {
+        t.increments('id').unsigned().primary()
+        t.integer('createdAt').nullable()
+        t.integer('updatedAt').nullable()
+
+        t.string('name').notNullable()
+        t.string('description').nullable()
+        t.string('icon').nullable()
+
     }).createTable(`center`, t => {
         t.increments('id').unsigned().primary()
         t.integer('createdAt').nullable()
@@ -44,6 +53,7 @@ exports.up = (knex, Promise) => knex.schema.createTable(`centerType`, t => {
 exports.down = function(knex, Promise) {
   return knex.schema.dropTable(`center`)
                     .dropTable(`region`)
+                    .dropTable('categoryType')
                     .dropTable(`centerType`)
 }
 

@@ -1,4 +1,4 @@
-const data = require('../../data/centers')
+const data = require('../../data/medical-centers/center')
 
 const insert_data = (knex,t,d) => knex(t).insert(d)
 
