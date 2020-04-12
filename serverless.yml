@@ -54,6 +54,16 @@ custom:
           name: "CustomAuthorizer"
           description: "Authorization is not implemented yet"
 
+    models:
+     -
+        name: DebugResponse
+        contentType: "application/json"
+        schema:
+          type: object
+          properties:
+            body:
+              type: object
+
     paramDescriptions:
       CorsHeaders: &CorsHeaders
         origin: '*'
@@ -76,4 +86,34 @@ package:
 
 functions:
 
+  debugPost: 
+    handler: handlers/debug.debug
+    events:
+      - http:
+          path: debug
+          method: post
+          cors: *CorsHeaders 
+          documentation:
+            summary: Returns the event that tiggered the lambda call
+            description: Debug echo method, accepts everything.
+            methodResponses:
+              - statusCode: 200
+                responseModels:
+                  "application/json": DebugResponse
+    timeout: 30
 
+  debugGet: 
+    handler: handlers/debug.debug
+    events:
+      - http:
+          path: debug
+          method: get
+          cors: *CorsHeaders 
+          documentation:
+            summary: Returns the parameters from get call
+            description: Debug echo method, accepts any parameter.
+            methodResponses:
+              - statusCode: 200
+                responseModels:
+                  "application/json": DebugResponse
+    timeout: 30
