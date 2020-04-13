@@ -1,0 +1,132 @@
+
+plugins:
+  - serverless-plugin-split-stacks
+  - serverless-aws-documentation
+
+service: mensageo
+#app: your-app-name
+#tenant: your-tenant-name
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+  versionFunctions: false
+  stage: ${env:STAGE}
+  region: ${env:AWSREGION}
+  vpc:
+    securityGroupIds:
+      - ${env:AWSSECURITYGROUP}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - lambda:InvokeFunction
+        - lambda:InvokeAsync
+      Resource: "*"
+
+  environment:
+    STAGE: ${env:STAGE}
+
+  apiKeys:
+    - { name: "${self:service}-${env:STAGE}-api-key" }
+    - { name: "${self:service}-${env:STAGE}-default",
+        value: "${env:STATICAPIBEARER}" }
+
+  # usagePlan:
+  #   quota:
+  #     limit: 10000
+  #     offset: 2
+  #     period: MONTH
+  #   throttle:
+  #     burstLimit: 200
+  #     rateLimit: 100
+
+custom:
+  localstack:
+    endpointFile: ./localstack.json
+
+  splitStacks:
+    perFunction: false
+    perType: false
+
+  documentation:
+    api:
+      info:
+        version: "0.0.1"
+        title: "mensageo backend"
+        description: "mensageo API"
+        termsOfService: "http://www.mensageo.com/terms-of-service"
+        contact:
+          name: "mensageo"
+          url: "https://www.mensageo.com/"
+          email: "info@mensageo.com"
+        license:
+          name: "MIT"
+          url: "https://opensource.org/licenses/MIT"
+      authorizers:
+        -
+          name: "CustomAuthorizer"
+          description: "Authorization is not implemented yet"
+
+    models:
+     -
+        name: DebugResponse
+        contentType: "application/json"
+        schema:
+          type: object
+          properties:
+            body:
+              type: object
+
+    paramDescriptions:
+      CorsHeaders: &CorsHeaders
+        origin: '*'
+        headers:
+          - Content-Type
+          - X-Amz-Date
+          - Authorization
+          - X-Api-Key
+          - X-Amz-Security-Token
+          - X-Amz-User-Agent
+        allowCredentials: false
+
+package:
+  include:
+    - models/**
+    - handlers/**
+    - knex/**
+    - knexfile.js
+    - lib/**
+
+functions:
+
+  debugPost: 
+    handler: handlers/debug.debug
+    events:
+      - http:
+          path: debug
+          method: post
+          cors: *CorsHeaders 
+          documentation:
+            summary: Returns the event that tiggered the lambda call
+            description: Debug echo method, accepts everything.
+            methodResponses:
+              - statusCode: 200
+                responseModels:
+                  "application/json": DebugResponse
+    timeout: 30
+
+  debugGet: 
+    handler: handlers/debug.debug
+    events:
+      - http:
+          path: debug
+          method: get
+          cors: *CorsHeaders 
+          documentation:
+            summary: Returns the parameters from get call
+            description: Debug echo method, accepts any parameter.
+            methodResponses:
+              - statusCode: 200
+                responseModels:
+                  "application/json": DebugResponse
+    timeout: 30

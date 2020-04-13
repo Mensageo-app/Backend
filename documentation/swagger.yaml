@@ -1,0 +1,64 @@
+---
+swagger: "2.0"
+info:
+  description: "mensageo API"
+  version: "2020-04-12T20:06:56Z"
+  title: "dev-mensageo"
+  termsOfService: "http://www.mensageo.com/terms-of-service"
+  contact:
+    name: "mensageo"
+    url: "https://www.mensageo.com/"
+    email: "info@mensageo.com"
+  license:
+    name: "MIT"
+    url: "https://opensource.org/licenses/MIT"
+host: "dqrcet5up6.execute-api.eu-west-1.amazonaws.com"
+basePath: "/dev"
+schemes:
+- "https"
+paths:
+  /debug:
+    get:
+      summary: "Returns the parameters from get call"
+      description: "Debug echo method, accepts any parameter."
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/DebugResponse"
+    post:
+      summary: "Returns the event that tiggered the lambda call"
+      description: "Debug echo method, accepts everything."
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/DebugResponse"
+    options:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+            Access-Control-Allow-Methods:
+              type: "string"
+            Access-Control-Allow-Credentials:
+              type: "string"
+            Access-Control-Allow-Headers:
+              type: "string"
+definitions:
+  DebugResponse:
+    type: "object"
+    properties:
+      body:
+        type: "object"
+        properties: {}
