@@ -1,7 +1,7 @@
 const process = require('process')
 
 module.exports = {
-  dev: {
+  stage: {
     client: 'pg',
     debug: true,
     connection: {
@@ -18,5 +18,22 @@ module.exports = {
     seeds: {
       directory: __dirname + '/knex/seeds'
     }
-  }
+  },
+
+  dev: {
+    debug: true,
+    client: 'sqlite3',
+    connection: {
+      filename: '/.dev.db'
+    },
+    useNullAsDefault: true,
+    migrations: {
+      tableName: 'knex_migrations',
+      directory: __dirname + '/knex/migrations/'
+    },
+    seeds: {
+      directory: __dirname + '/knex/seeds/'
+    }
+  } 
+
 }
