@@ -5,17 +5,19 @@
   "main": "serverless deploy",
   "scripts": {
     "test": "jest",
-    "getdoc": "serverless downloadDocumentation --outputFileName=documentation/swagger.yaml"
+    "getdoc": "serverless downloadDocumentation --outputFileName=documentation/swagger.yaml",
+    "migrate": "knex migrate:latest",
+    "seed": "knex seed:run"
   },
   "author": "mensageo",
   "license": "MIT",
   "dependencies": {
-    "pg": "^7.11.0",
-    "pg-hstore": "^2.3.3",
     "knex": ">=0.19.5",
+    "lodash": "^4.17.11",
     "objection": "^1.6.9",
     "objection-find": "^1.6.5",
-    "lodash": "^4.17.11"
+    "pg": "^7.11.0",
+    "pg-hstore": "^2.3.3"
   },
   "devDependencies": {
     "jest": "^25.3.0",
@@ -23,6 +25,7 @@
     "serverless": "^1.44.1",
     "serverless-jest-plugin": "^0.3.0",
     "serverless-aws-documentation": "^1.1.0",
-    "serverless-plugin-split-stacks": "^1.7.6"
+    "serverless-plugin-split-stacks": "^1.7.6",
+    "sqlite3": "^4.1.1"
   }
 }
