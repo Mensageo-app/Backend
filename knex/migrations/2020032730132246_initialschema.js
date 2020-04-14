@@ -57,8 +57,60 @@ exports.up = (knex, Promise) => knex.schema.createTable(`centerType`, t => {
         t.string('img').nullable()
         t.string('idCategory').notNullable().references(`categoryType.id`)
         t.string('approved').nullable()
-    })
+    
+    
+    }).createTable(`centerPetition`, t => {
+        t.increments('id').unsigned().primary()
+        t.integer('createdAt').nullable()
+        t.integer('updatedAt').nullable()
 
+        t.integer('idResource').notNullable().references(`resources.id`)
+        t.integer('idCenter').notNullable().references(`center.id`)
+        t.boolean('active').notNullable().defaultTo(false)
+        t.integer('totalQuantity').notNullable().defaultTo(0)
+    
+    }).createTable(`user`, t => {
+        t.increments('id').unsigned().primary()
+        t.integer('createdAt').nullable()
+        t.integer('updatedAt').nullable()
+
+        t.integer('rol').notNullable().defaultTo(0)
+        t.string('name').notNullable()
+        t.string('email').notNullable()
+        t.string('pswd').notNullable()
+        t.integer('phone').nullable()
+        t.integer('fax').nullable()
+        t.boolean('confirmed').notNullable().defaultTo(false)
+    
+    }).createTable(`userProposal`, t => {
+        t.increments('id').unsigned().primary()
+        t.integer('createdAt').nullable()
+        t.integer('updatedAt').nullable()
+
+        t.integer('idUser').notNullable().references(`user.id`)
+        t.integer('idPetition').notNullable().references(`centerPetition.id`)
+        t.integer('idCategory').notNullable().references(`categoryType.id`)
+        t.string('name').notNullable()
+        t.string('img').nullable()
+        t.boolean('homologated').notNullable().defaultTo(false)
+        t.string('quantity').notNullable().defaultTo(0)
+        t.boolean('accepted').notNullable().defaultTo(false)
+        t.integer('acceptedDate').nullable()
+        t.boolean('rejected').notNullable().defaultTo(false)
+        t.integer('rejectedDate').nullable()
+        t.boolean('delivered').notNullable().defaultTo(false)
+        t.integer('deliveredDate').nullable()
+    
+    }).createTable(`centerAdmin`, t => {
+        t.increments('id').unsigned().primary()
+        t.integer('createdAt').nullable()
+        t.integer('updatedAt').nullable()
+
+        t.integer('idUser').notNullable().references(`user.id`)
+        t.integer('idCenter').notNullable().references(`center.id`)
+        t.integer('adminLevel').notNullable().defaultTo(0)
+    })
+    
 
 exports.down = function(knex, Promise) {
   return knex.schema.dropTable(`resources`)
@@ -66,6 +118,10 @@ exports.down = function(knex, Promise) {
                     .dropTable(`region`)
                     .dropTable('categoryType')
                     .dropTable(`centerType`)
+                    .dropTable(`productPetition`)
+                    .dropTable(`user`)
+                    .dropTable(`userProposal`)
+                    .dropTable('centerAdmin')
 }
 
 
