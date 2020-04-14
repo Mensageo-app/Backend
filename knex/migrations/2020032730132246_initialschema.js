@@ -58,13 +58,12 @@ exports.up = (knex, Promise) => knex.schema.createTable(`centerType`, t => {
         t.string('idCategory').notNullable().references(`categoryType.id`)
         t.string('approved').nullable()
     
-    
     }).createTable(`centerPetition`, t => {
         t.increments('id').unsigned().primary()
         t.integer('createdAt').nullable()
         t.integer('updatedAt').nullable()
 
-        t.integer('idResource').notNullable().references(`resources.id`)
+        t.integer('idResources').notNullable().references(`resources.id`)
         t.integer('idCenter').notNullable().references(`center.id`)
         t.boolean('active').notNullable().defaultTo(false)
         t.integer('totalQuantity').notNullable().defaultTo(0)
