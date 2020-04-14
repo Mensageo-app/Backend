@@ -1,9 +1,9 @@
 const BaseModel = require('./BaseModel')
 
 
-module.exports = class Resources extends BaseModel {
+module.exports = class Resource extends BaseModel {
     static get tableName() {
-      return `resources`
+      return `resource`
     }
   
     static get relationMappings() {

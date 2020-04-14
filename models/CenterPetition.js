@@ -7,15 +7,15 @@ module.exports = class CenterPetition extends BaseModel {
     }
 
     static get relationMappings() {
-      const Resources = require('./Resources');
+      const Resources = require('./Resource');
       const Center = require('./Center');
 
       return {
         resources: {
             relation: BaseModel.HasOneRelation,
-            modelClass: Resources,
+            modelClass: Resource,
             join: {
-              from: `${this.tableName}.idResources`,
+              from: `${this.tableName}.idResource`,
               to: `${Resources.tableName}.id`
             }
           },

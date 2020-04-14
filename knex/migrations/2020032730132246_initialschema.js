@@ -47,7 +47,7 @@ exports.up = (knex, Promise) => knex.schema.createTable(`centerType`, t => {
         t.string('lat').nullable()
         t.string('lon').nullable()
 
-    }).createTable(`resources`, t => {
+    }).createTable(`resource`, t => {
         t.increments('id').unsigned().primary()
         t.integer('createdAt').nullable()
         t.integer('updatedAt').nullable()
@@ -63,7 +63,7 @@ exports.up = (knex, Promise) => knex.schema.createTable(`centerType`, t => {
         t.integer('createdAt').nullable()
         t.integer('updatedAt').nullable()
 
-        t.integer('idResources').notNullable().references(`resources.id`)
+        t.integer('idResource').notNullable().references(`resource.id`)
         t.integer('idCenter').notNullable().references(`center.id`)
         t.boolean('active').notNullable().defaultTo(false)
         t.integer('totalQuantity').notNullable().defaultTo(0)
@@ -112,7 +112,7 @@ exports.up = (knex, Promise) => knex.schema.createTable(`centerType`, t => {
     
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTable(`resources`)
+  return knex.schema.dropTable(`resource`)
                     .dropTable(`center`)
                     .dropTable(`region`)
                     .dropTable('categoryType')

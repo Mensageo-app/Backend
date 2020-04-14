@@ -61,8 +61,8 @@ module.exports = class UserProposal extends BaseModel {
         acceptedDate:            {type: 'integer'},
         rejected:                {type: 'boolean'},
         rejectedDate:            {type: 'integer'},
-        delivered:                {type: 'boolean'},
-        deliveredDate:            {type: 'integer'},
+        delivered:               {type: 'boolean'},
+        deliveredDate:           {type: 'integer'},
         }
       }
     }
