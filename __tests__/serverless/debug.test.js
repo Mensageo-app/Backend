@@ -25,7 +25,7 @@ describe('debugPost', () => {
       expect(response.statusCode).toBe(200)
       expect(response.headers).toEqual({ "X-DEBUG-HEADER": "true" })
       // According to the API Gateway specs, the body content must be stringified.
-      expect(response.body).toBe( JSON.stringify(event) )
+      expect(JSON.parse(response.body)).toEqual( event )
 
     })
   })
