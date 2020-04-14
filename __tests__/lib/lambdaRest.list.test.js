@@ -50,24 +50,5 @@ describe('lambdaRest.list', () => {
                               expect(JSON.parse(r.body)).toEqual(data)
                             })
     })
-  
-    // it('should return 400 and ask for required parameters', async () => {
-      
-    //     const data = { results: [{ id: 123 }]}
-    
-    //     const mockOrmFind = jest.spyOn( orm, "list" )
-    //                             .mockImplementation( (e, m) => new Promise( (res,rej) => res(data)))
-    
-    //     const e = { pathParameters: { id: '0' },
-    //                 queryStringParameters: {} }
-    
-    //     return mod.list(e, null)
-    //               .then( r => {
-    //                             expect(r.statusCode).toBe(400)
-    //                             expect(r.headers).toEqual(corsHeaders)
-    //                             expect(mockOrmFind.mock.calls.length).toBe(0)
-    //                             expect(JSON.parse(r.body)).toEqual({ msg: "range parameters are mandatory." })
-    //                           })
-    //   })
 
   })

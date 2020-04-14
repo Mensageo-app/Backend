@@ -1,16 +1,11 @@
 'use strict'
 
-// tests for mensageoOrm module
-
 const mOrm = require('../../lib/mensageoOrm')
 const env = 'jest'
-
-// las cosas de knex
 
 const config = require('../../knexfile.js')[env]
 const knex = require('knex')(config)
 
-// Objection.js
 const { Model } = require('objection')
 Model.knex(knex)
 const model = require('../../knex/test/models/planet')
