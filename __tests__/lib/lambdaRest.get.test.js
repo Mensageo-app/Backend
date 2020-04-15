@@ -1,7 +1,7 @@
 'use strict'
 
 const mod = require('../../lib/lambdaRest')
-const orm = require('../../lib/mensageoOrm')
+const app = require('../../lib/mensageo')
 
 const corsHeaders = {
     'Access-Control-Allow-Origin': '*',
@@ -22,7 +22,7 @@ describe('lambdaRest.get', () => {
 
     const data = []
 
-    const mockOrmGet = jest.spyOn( orm, "get" )
+    const mockOrmGet = jest.spyOn( app, "get" )
                            .mockImplementation( (e, m) => new Promise( (res,rej) => rej(data)))
 
     const e = { pathParameters: { id: '0' },
@@ -41,7 +41,7 @@ describe('lambdaRest.get', () => {
     
     const data = [{ id: 123 }]
 
-    const mockOrmGet = jest.spyOn( orm, "get" )
+    const mockOrmGet = jest.spyOn( app, "get" )
                            .mockImplementation( (e, m) => new Promise( (res,rej) => res(data)))
 
     const e = { pathParameters: { id: '0' },

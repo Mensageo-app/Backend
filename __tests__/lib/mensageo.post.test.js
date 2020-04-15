@@ -1,8 +1,8 @@
 'use strict'
 
-// tests for mensageoOrm module
+// tests for mensageo module
 
-const mOrm = require('../../lib/mensageoOrm')
+const app = require('../../lib/mensageo')
 const env = 'jest'
 
 const config = require('../../knexfile.js')[env]
@@ -15,7 +15,7 @@ const model = require('../../knex/test/models/planet')
 
 
 
-describe('mensageoOrm.post', () => {
+describe('mensageoapp.post', () => {
   beforeAll( () => {
     return knex.migrate.latest()
   })
@@ -35,21 +35,21 @@ describe('mensageoOrm.post', () => {
     const planet = { name: 'Tatooine', code: 'TTN', desc: 'Anakins planet' }
 
 
-    expect( () => mOrm.post(model, planet).toThrowError())
+    expect( () => app.post(model, planet).toThrowError())
   })
 
   it('should reject to create an item that already exists', async () => {
 
     const planet = { id: 3, name: 'Dagobah', code: 'DGB', desc: 'Yodas planet' }
 
-    expect( () => mOrm.post(model, planet).toThrowError())
+    expect( () => app.post(model, planet).toThrowError())
   })
 
   it('should create a new item', async () => {
 
     const planet = { name: 'Dagobah', code: 'DGB', desc: 'Yodas planet' }
 
-    return mOrm.post(model, planet)
+    return app.post(model, planet)
                .then( r => {
                              expect(r.id).toBe(8)
                              delete r.id
@@ -61,7 +61,7 @@ describe('mensageoOrm.post', () => {
 
     const planet = { code: 'DGB' }
 
-    return mOrm.post(model, planet)
+    return app.post(model, planet)
                .then( r => {
                              expect(r.id).toBe(8)
                              delete r.id
@@ -73,7 +73,7 @@ describe('mensageoOrm.post', () => {
 
     const planet = { id: 11, code: 'DGB' }
 
-    return mOrm.post(model, planet)
+    return app.post(model, planet)
                .then( r => {
                              expect(r.id).toBe(8)
                              delete r.id

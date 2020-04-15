@@ -1,6 +1,6 @@
 'use strict'
 
-const mOrm = require('../../lib/mensageoOrm')
+const app = require('../../lib/mensageo')
 const env = 'jest'
 
 const config = require('../../knexfile.js')[env]
@@ -12,7 +12,7 @@ const model = require('../../knex/test/models/planet')
 
 
 
-describe('mensageoOrm.list', () => {
+describe('mensageoapp.list', () => {
   beforeAll( () => {
     return knex.migrate.latest()
                        .then(() => knex.seed.run([config]) )
@@ -27,7 +27,7 @@ describe('mensageoOrm.list', () => {
 
     const params = { }
 
-    let r = await mOrm.list(model, params)
+    let r = await app.list(model, params)
 
     expect('results' in r).toBe(true)
     expect('total' in r).toBe(true)
@@ -39,7 +39,7 @@ describe('mensageoOrm.list', () => {
 
     const params = { id: 123, rangeStart: 34 }
 
-    return mOrm.list(model, params)
+    return app.list(model, params)
                .then( r => {
                              expect(r).toEqual({"results": [], "total": 0})
                            })
@@ -50,7 +50,7 @@ describe('mensageoOrm.list', () => {
 
     const params = { rangeStart: 2, rangeEnd: 2 }
 
-    let r = await  mOrm.list(model, params)
+    let r = await  app.list(model, params)
 
     expect(r).toEqual( { 
                         results: [{ id: 3, name: 'Bespin', code: 'BSP', desc: 'Landos planet' }],
@@ -62,7 +62,7 @@ describe('mensageoOrm.list', () => {
 
     const params = { rangeStart: 6 }
 
-    let r = await  mOrm.list(model, params)
+    let r = await  app.list(model, params)
 
     expect(r).toEqual( { 
                         results: [{ id: 7, name: 'Tatooine', code: 'TTN', desc: 'Anakins planet' }],
@@ -75,7 +75,7 @@ describe('mensageoOrm.list', () => {
 
     const params = { rangeStart: 2, rangeEnd: 4 }
 
-    return mOrm.list(model, params)
+    return app.list(model, params)
                .then( r => {
                             expect('results' in r).toBe(true)
                             expect('total' in r).toBe(true)
@@ -96,7 +96,7 @@ describe('mensageoOrm.list', () => {
                      rangeStart: 0,
                      rangeEnd: 20}
 
-    return mOrm.list(model, params)
+    return app.list(model, params)
                .then( r => {
                             expect('results' in r).toBe(true)
                             expect('total' in r).toBe(true)
@@ -113,7 +113,7 @@ describe('mensageoOrm.list', () => {
 
     const params = { 'count': '' }
 
-    let r = await mOrm.list(model, params)
+    let r = await app.list(model, params)
 
     expect('results' in r).toBe(true)
     expect('total' in r).toBe(true)

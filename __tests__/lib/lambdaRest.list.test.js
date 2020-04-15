@@ -1,7 +1,7 @@
 'use strict'
 
 const mod = require('../../lib/lambdaRest')
-const orm = require('../../lib/mensageoOrm')
+const app = require('../../lib/mensageo')
 
 const corsHeaders = {
     'Access-Control-Allow-Origin': '*',
@@ -19,7 +19,7 @@ describe('lambdaRest.list', () => {
   
     it('should return 404 and empty dataset', async () => {
       const data = { results: [{}], total: 0}
-      const mockOrmFind = jest.spyOn( orm, "list" )
+      const mockOrmFind = jest.spyOn( app, "list" )
                               .mockImplementation( (e, m) => new Promise( (res,rej) => rej(data)))
   
       const e = { queryStringParameters: { rangeStart: 0, rangeEnd: 10 } }
@@ -37,7 +37,7 @@ describe('lambdaRest.list', () => {
       
       const data = { results: [{ id: 123 }]}
   
-      const mockOrmFind = jest.spyOn( orm, "list" )
+      const mockOrmFind = jest.spyOn( app, "list" )
                               .mockImplementation( (e, m) => new Promise( (res,rej) => res(data)))
   
       const e = { queryStringParameters: { rangeStart: 0, rangeEnd: 10, id: 123 } }

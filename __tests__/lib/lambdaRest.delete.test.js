@@ -1,7 +1,7 @@
 'use strict'
 
 const mod = require('../../lib/lambdaRest')
-const orm = require('../../lib/mensageoOrm')
+const app = require('../../lib/mensageo')
 
 const corsHeaders = {
     'Access-Control-Allow-Origin': '*',
@@ -18,7 +18,7 @@ describe('lambdaRest.delete', () => {
       jest.clearAllMocks()
   } )
   it('should return 404 and no body', async () => {
-    const mockOrmDelete = jest.spyOn( orm, "delete" )
+    const mockOrmDelete = jest.spyOn( app, "delete" )
                            .mockImplementation( (m, i, d) => new Promise( (res,rej) => rej('')))
 
     const e = { 
@@ -37,7 +37,7 @@ describe('lambdaRest.delete', () => {
 
   it('should return 204 and no body', async () => {
     
-    const mockOrmDelete = jest.spyOn( orm, "delete" )
+    const mockOrmDelete = jest.spyOn( app, "delete" )
                               .mockImplementation( (m, i, d) => new Promise( (res,rej) => res(1)))
 
     const e = { 

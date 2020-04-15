@@ -1,8 +1,8 @@
 'use strict'
 
-// tests for mensageoOrm module
+// tests for mensageo module
 
-const mOrm = require('../../lib/mensageoOrm')
+const app = require('../../lib/mensageo')
 const env = 'jest'
 
 const config = require('../../knexfile.js')[env]
@@ -15,7 +15,7 @@ const model = require('../../knex/test/models/planet')
 
 
 
-describe('mensageoOrm.delete', () => {
+describe('mensageoapp.delete', () => {
   beforeAll( () => {
     return knex.migrate.latest()
   })
@@ -32,7 +32,7 @@ describe('mensageoOrm.delete', () => {
 
   it('should allow to delete an item', async () => {
 
-    return mOrm.delete(model, 1)
+    return app.delete(model, 1)
                .then( r => {
                             expect(r).toBe(1)
                            })
@@ -40,7 +40,7 @@ describe('mensageoOrm.delete', () => {
 
   it('should return 0 if id does not exist', async () => {
 
-    return mOrm.delete(model, 21)
+    return app.delete(model, 21)
                .then( r => {
                             expect(r).toBe(0)
                            })

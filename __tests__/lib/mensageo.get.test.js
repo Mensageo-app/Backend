@@ -1,6 +1,6 @@
 'use strict'
 
-const mOrm = require('../../lib/mensageoOrm')
+const app = require('../../lib/mensageo')
 const env = 'jest'
 
 const config = require('../../knexfile.js')[env]
@@ -13,7 +13,7 @@ const model = require('../../knex/test/models/planet')
 
 
 
-describe('mensageoOrm.get', () => {
+describe('mensageoapp.get', () => {
   beforeAll( () => {
     return knex.migrate.latest()
                        .then(() => knex.seed.run([config]) )
@@ -28,7 +28,7 @@ describe('mensageoOrm.get', () => {
 
     const params = { id: 1 }
 
-    return mOrm.get(model, params)
+    return app.get(model, params)
                .then( r => {
                              expect(r.length).toBe(1)
                              expect(r[0].id).toBe(1)
@@ -41,7 +41,7 @@ describe('mensageoOrm.get', () => {
 
     const params = { id: 123 }
 
-    return mOrm.get(model, params)
+    return app.get(model, params)
                .then( r => {
                              expect(r).toEqual([])
                            })
@@ -52,7 +52,7 @@ describe('mensageoOrm.get', () => {
 
     const params = { id: 1, rangeStart: 0, rangeEnd: 23, count: '', orderByDesc: 'id' }
 
-    let r = await  mOrm.get(model, params)
+    let r = await  app.get(model, params)
     
     expect(r.length).toBe(1)
     expect(r[0].id).toBe(1)
