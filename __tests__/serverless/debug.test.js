@@ -32,3 +32,34 @@ describe('debugPost', () => {
 
 })
 
+describe('securedDebug', () => {
+  beforeAll((done) => {
+    done()
+  })
+
+  it('should return event as body', async () => {
+
+    const wrapped = lambdaWrapper.wrap(mod, { handler: 'securedDebug' })
+
+    const event = { event: { body: { debug: "debug message" } } }
+
+    return wrapped.run( event ).then((response) => {
+
+      expect(response.statusCode).toBe(200)
+      expect(response.headers).toEqual({ 
+                                          "Access-Control-Allow-Origin" : "http://localhost:3000",
+                                          "Access-Control-Allow-Credentials" : true 
+                                        })
+      // According to the API Gateway specs, the body content must be stringified.
+      expect(JSON.parse(response.body)).toEqual( event )
+
+    })
+  })
+
+})
+
+
+
+
+
+
