@@ -4,12 +4,12 @@ module.exports = (resource, logicalId) => {
         return { destination: 'getMethods' }
     }
 
-    if (logicalId.indexOf('Post') > -1) {
-        return { destination: 'postMethods' }
+    if (logicalId.indexOf('List') > -1) {
+        return { destination: 'listMethods' }
     }
 
-    if (logicalId.indexOf('Find') > -1) {
-        return { destination: 'findMethods' }
+    if (logicalId.indexOf('Post') > -1) {
+        return { destination: 'postMethods' }
     }
 
     if (logicalId.indexOf('Put') > -1) {
@@ -23,5 +23,4 @@ module.exports = (resource, logicalId) => {
     if (logicalId.indexOf('Delete') > -1) {
         return { destination: 'deleteMethods' }
     }
-
-  };
+ }
