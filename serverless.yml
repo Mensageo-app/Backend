@@ -13,6 +13,7 @@ provider:
   versionFunctions: false
   stage: ${env:STAGE}
   region: ${env:AWSREGION}
+  logRetentionInDays: 30
   vpc:
     securityGroupIds:
       - ${env:AWSSECURITYGROUP}
