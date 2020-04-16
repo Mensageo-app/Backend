@@ -8,6 +8,9 @@
     "getdoc": "serverless downloadDocumentation --outputFileName=documentation/swagger.yaml",
     "migrate": "knex migrate:latest",
     "seed": "knex seed:run"
+    "seed": "knex seed:run",
+    "deploy": "serverless deploy",
+    "undeploy": "serverless remove"
   },
   "author": "mensageo",
   "license": "MIT",
