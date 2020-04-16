@@ -2,10 +2,9 @@
 
 // tests for mensageo module
 
-const app = require('../../lib/mensageo')
-const env = 'jest'
+const app = require('../../src/mensageo')
 
-const config = require('../../knexfile.js')[env]
+const config = require('../../knexfile.js')['jest']
 const knex = require('knex')(config)
 
 // Objection.js

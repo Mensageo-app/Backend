@@ -6,21 +6,21 @@ const headers = require('./responseHeaders').corsHeaders
 
 const app = require('./mensageo')
 
-const emptyDataset = { results: [{}], total: 0}
+const emptyDataset = { results: [], total: 0 }
 
 module.exports.get = async (event,model) => {
   
   let params = Object.assign(
                             { id: Number(event.pathParameters.id) },
-                            event.queryStringParameters
+                            event.pathStringParameters
                             )
 
   let result = await app.get(model, params)
-                        .catch( e => [] )
+                        .catch( e => emptyDataset )
 
   let body = JSON.stringify(result, null, 2)
 
-  let statusCode = _.isEqual([], result) ? 404 : 200
+  let statusCode = _.isEqual(emptyDataset, result) ? 404 : 200
 
   return {
           statusCode: statusCode,
@@ -31,7 +31,7 @@ module.exports.get = async (event,model) => {
 
 module.exports.list = async (event,model) => {
 
-  let params = event.queryStringParameters
+  let params = event.pathStringParameters
 
   let result = await app.list(model, params)
                         .catch( e => emptyDataset )
@@ -50,11 +50,12 @@ module.exports.list = async (event,model) => {
 module.exports.post = async (event,model) => {
   let body = JSON.parse(event.body)
 
+
   let result = await app.post(model, body)
-                        .catch( () => [] )
+                        .catch( e => e )
 
   return {
-    statusCode: result.length === 0 ? 409 : 204,
+    statusCode: _.isEqual({}, result) == true ? 409 : 204,
     headers: headers
   }
 }
@@ -62,8 +63,7 @@ module.exports.post = async (event,model) => {
 module.exports.patch = async (event,model) => {
   let data = JSON.parse(event.body)
 
-  //queryParameters to be removed
-  let id = event.pathParameters.id //? event.pathParameters.id : event.queryParameters.id
+  let id = event.pathParameters.id 
   let result = await app.patch(model, Number(id), data)
                         .catch( e => 0 )
   
@@ -75,7 +75,7 @@ module.exports.patch = async (event,model) => {
 }
 
 module.exports.delete = async (event,model) => {
-  let id = event.pathParameters.id //? event.pathParameters.id : event.queryParameters.id
+  let id = event.pathParameters.id
   let result = await app.delete(model, Number(id))
                         .catch( e => 0 )
   return {

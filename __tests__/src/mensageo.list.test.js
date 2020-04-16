@@ -1,9 +1,8 @@
 'use strict'
 
-const app = require('../../lib/mensageo')
-const env = 'jest'
+const app = require('../../src/mensageo')
 
-const config = require('../../knexfile.js')[env]
+const config = require('../../knexfile.js')['jest']
 const knex = require('knex')(config)
 
 const { Model } = require('objection')
@@ -39,11 +38,9 @@ describe('mensageoapp.list', () => {
 
     const params = { id: 123, rangeStart: 34 }
 
-    return app.list(model, params)
-               .then( r => {
-                             expect(r).toEqual({"results": [], "total": 0})
-                           })
+    let r = await app.list(model, params)
 
+    expect(r).toEqual({"results": [], "total": 0})
   })
 
   it('should accept pagination with results and total key', async () => {
@@ -75,18 +72,17 @@ describe('mensageoapp.list', () => {
 
     const params = { rangeStart: 2, rangeEnd: 4 }
 
-    return app.list(model, params)
-               .then( r => {
-                            expect('results' in r).toBe(true)
-                            expect('total' in r).toBe(true)
-                            expect(r.results.length).toBe(3)
-                            expect(r.results).toEqual([
-                              { id: 3, name: 'Bespin', code: 'BSP', desc: 'Landos planet' },
-                              { id: 4, name: 'Endor', code: 'NDR', desc: 'Ewoks planet' },
-                              { id: 5, name: 'Hoth', code: 'HTH', desc: 'Rebels iced basement planet' }
-                            ])
-                            expect(r.total).toBe(7)
-                           })
+    let r = await app.list(model, params)
+
+    expect('results' in r).toBe(true)
+    expect('total' in r).toBe(true)
+    expect(r.results.length).toBe(3)
+    expect(r.results).toEqual([
+      { id: 3, name: 'Bespin', code: 'BSP', desc: 'Landos planet' },
+      { id: 4, name: 'Endor', code: 'NDR', desc: 'Ewoks planet' },
+      { id: 5, name: 'Hoth', code: 'HTH', desc: 'Rebels iced basement planet' }
+    ])
+    expect(r.total).toBe(7)
   })
 
   it('should allow search filters', async () => {
@@ -96,17 +92,16 @@ describe('mensageoapp.list', () => {
                      rangeStart: 0,
                      rangeEnd: 20}
 
-    return app.list(model, params)
-               .then( r => {
-                            expect('results' in r).toBe(true)
-                            expect('total' in r).toBe(true)
-                            expect(r.results.length).toBe(2)
-                            expect(r.results).toEqual([
-                              { id: 2, name: 'Anoat', code: 'ANT', desc: 'Empires planet' },
-                              { id: 1, name: 'Alderaan', code: 'ALD', desc: 'Leias born planet' }
-                            ])
-                            expect(r.total).toBe(2)
-                     })
+    let r = await app.list(model, params)
+
+    expect('results' in r).toBe(true)
+    expect('total' in r).toBe(true)
+    expect(r.results.length).toBe(2)
+    expect(r.results).toEqual([
+      { id: 2, name: 'Anoat', code: 'ANT', desc: 'Empires planet' },
+      { id: 1, name: 'Alderaan', code: 'ALD', desc: 'Leias born planet' }
+    ])
+    expect(r.total).toBe(2)
   })
 
   it('should ignore count filters', async () => {
@@ -121,5 +116,3 @@ describe('mensageoapp.list', () => {
     expect(r.total).toBe(7)
   })
 })
-
-

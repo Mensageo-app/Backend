@@ -91,16 +91,14 @@ custom:
 
 package:
   include:
-    - models/**
-    - handlers/**
+    - src/**
     - knex/**
     - knexfile.js
-    - lib/**
 
 functions:
 
   debugPost: 
-    handler: handlers/debug.debug
+    handler: src/handlers/debug.debug
     events:
       - http:
           path: debug
@@ -116,7 +114,7 @@ functions:
     timeout: 30
 
   debugGet: 
-    handler: handlers/debug.debug
+    handler: src/handlers/debug.debug
     events:
       - http:
           path: debug

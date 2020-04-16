@@ -1,7 +1,7 @@
 'use strict'
 
-const mod = require('../../lib/lambdaRest')
-const app = require('../../lib/mensageo')
+const mod = require('../../src/lambda')
+const app = require('../../src/mensageo')
 
 const corsHeaders = {
     'Access-Control-Allow-Origin': '*',
@@ -9,7 +9,7 @@ const corsHeaders = {
   }
 
 
-describe('lambdaRest.delete', () => {
+describe('lambda.delete', () => {
   beforeAll((done) => {
 
     done()
@@ -26,13 +26,12 @@ describe('lambdaRest.delete', () => {
                 pathParameters: { id: '0'} 
               }
 
-    return mod.delete(e, null)
-              .then( r => {
-                            expect(r.statusCode).toBe(404)
-                            expect(r.headers).toEqual(corsHeaders)
-                            expect(mockOrmDelete).toHaveBeenCalled()
-                            expect(r.body).toBe(undefined)
-                          })
+    let r = await mod.delete(e, null)
+
+    expect(r.statusCode).toBe(404)
+    expect(r.headers).toEqual(corsHeaders)
+    expect(mockOrmDelete).toHaveBeenCalled()
+    expect(r.body).toBe(undefined)
   })
 
   it('should return 204 and no body', async () => {

@@ -1,4 +1,4 @@
-const {validatePagination} = require('../../lib/queryStringValidation')
+const {validatePagination} = require('../../src/pathStringValidation')
 
 describe('validatePagination', () => {
   
@@ -39,11 +39,10 @@ describe('validatePagination', () => {
     })
 
     it('should add both range params', async () => {
-
         const p = { }
-  
+
         let r = validatePagination(p)
-  
+        
         expect('rangeStart' in r).toBe(true)
         expect(r.rangeStart).toBe(0)
         expect('rangeEnd' in r).toBe(true)

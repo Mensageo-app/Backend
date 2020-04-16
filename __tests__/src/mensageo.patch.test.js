@@ -1,9 +1,8 @@
 'use strict'
 
-const app = require('../../lib/mensageo')
-const env = 'jest'
+const app = require('../../src/mensageo')
 
-const config = require('../../knexfile.js')[env]
+const config = require('../../knexfile.js')['jest']
 const knex = require('knex')(config)
 
 const { Model } = require('objection')
@@ -36,8 +35,8 @@ describe('mensageoapp.patch', () => {
     expect(r).toBe(1)
                
     let i = await app.get(model, {id: 1})
-    expect(i[0].id).toBe(1)
-    expect(i[0].name).toBe(planet.name)
+    expect(i.results[0].id).toBe(1)
+    expect(i.results[0].name).toBe(planet.name)
   })
 
   it('should return 0 if id does not exist', async () => {
@@ -55,8 +54,8 @@ describe('mensageoapp.patch', () => {
     let r = await app.patch(model, 3, planet)
     
     let i = await app.get(model, {id: 3})
-    expect(i[0].id).toBe(3)
-    expect(i[0].id).not.toBe(22)
+    expect(i.results[0].id).toBe(3)
+    expect(i.results[0].id).not.toBe(22)
     expect(r).toBe(1)
   })
 
@@ -66,9 +65,9 @@ describe('mensageoapp.patch', () => {
     let r = await app.patch(model, 3, planet)
     
     let i = await app.get(model, {id: 3})
-    expect(i[0].id).toBe(3)
-    expect(i[0].createdAt).not.toBe(0)
-    expect(i[0].updatedAt).not.toBe(0)
+    expect(i.results[0].id).toBe(3)
+    expect(i.results[0].createdAt).not.toBe(0)
+    expect(i.results[0].updatedAt).not.toBe(0)
     expect(r).toBe(1)
   })
 })

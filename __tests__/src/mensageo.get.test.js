@@ -1,16 +1,13 @@
 'use strict'
 
-const app = require('../../lib/mensageo')
-const env = 'jest'
+const app = require('../../src/mensageo')
 
-const config = require('../../knexfile.js')[env]
+const config = require('../../knexfile.js')['jest']
 const knex = require('knex')(config)
 
-// Objection.js
 const { Model } = require('objection')
 Model.knex(knex)
 const model = require('../../knex/test/models/planet')
-
 
 
 describe('mensageoapp.get', () => {
@@ -28,24 +25,20 @@ describe('mensageoapp.get', () => {
 
     const params = { id: 1 }
 
-    return app.get(model, params)
-               .then( r => {
-                             expect(r.length).toBe(1)
-                             expect(r[0].id).toBe(1)
-                             expect(r[0].name).toBe('Alderaan')
-               })
+    let r =await app.get(model, params)
 
+    expect(r.results.length).toBe(1)
+    expect(r.results[0].id).toBe(1)
+    expect(r.results[0].name).toBe('Alderaan')
   })
 
-  it('should return empty array with invalid id', async () => {
+  it('should return an empty array with invalid id', async () => {
 
     const params = { id: 123 }
 
-    return app.get(model, params)
-               .then( r => {
-                             expect(r).toEqual([])
-                           })
+    let r = await app.get(model, params)
 
+    expect(r).toEqual({ results: [], total: 0})
   })
 
   it('should not accept other params than id and eager', async () => {
@@ -54,9 +47,9 @@ describe('mensageoapp.get', () => {
 
     let r = await  app.get(model, params)
     
-    expect(r.length).toBe(1)
-    expect(r[0].id).toBe(1)
-    expect(r[0].name).toBe('Alderaan')
+    expect(r.results.length).toBe(1)
+    expect(r.results[0].id).toBe(1)
+    expect(r.results[0].name).toBe('Alderaan')
   })
 
 })
