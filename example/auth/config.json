@@ -1,0 +1,4 @@
+{
+  "serviceURL":"https://something.execute-api.eu-west-1.amazonaws.com/dev/securedDebug",
+  "authenticationURL": "https://mensageo.auth.eu-west-1.amazoncognito.com/login?response_type=token&client_id=APPID&redirect_uri=http://localhost:3000"
+}

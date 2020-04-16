@@ -10,7 +10,7 @@ Table in database => JSONs: <br/>
 
 #### temporary auth
 
-just add key in header `x-api-key`
+just add key in header `x-api-key` 
 
 #### quota
 
@@ -25,4 +25,14 @@ currently disabled
     throttle:
       burstLimit: 200
       rateLimit: 100
+```
+
+#### deploy
+
+`NODE_ENV` and `STAGE` need to be set along with the `.env` file variables
+
+```
+$ npm migrate
+$ npm seed
+$ npm deploy
 ```
