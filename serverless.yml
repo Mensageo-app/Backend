@@ -132,6 +132,8 @@ functions:
                 responseModels:
                   "application/json": DebugResponse
     timeout: 30
+
+
   securedDebug:
     handler: src/handlers/securedDebug.debug
     events:
@@ -143,6 +145,11 @@ functions:
             type: COGNITO_USER_POOLS
             authorizerId:
               Ref: ApiGatewayAuthorizer
+
+          # authorizer:
+          #   name: authorizer
+          #   arn: ${env:COGNITOAPPARN}
+
 resources:
   Resources:
     CognitoUserPool:
