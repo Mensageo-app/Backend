@@ -12,6 +12,13 @@ Table in database => JSONs: <br/>
 
 just add key in header `x-api-key` 
 
+#### cognito auth
+
+`Autentication` Header to be set in frontend.
+Token handling is done via `login` and `logout` cognito endpoints.
+
+An example is available under `examples` folder.
+
 #### quota
 
 currently disabled
