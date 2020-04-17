@@ -10,14 +10,14 @@ exports.up = (knex, Promise) => knex.schema.createTable(`centerType`, t => {
         t.string('description').notNullable()
 
     }).createTable(`region`, t => {
-        //t.increments('id').unsigned().primary()
-        t.string('nutsCode').primary()
+        t.increments('id').unsigned().primary()
+        t.string('nutsCode').nullable()
         t.integer('createdAt').nullable()
         t.integer('updatedAt').nullable()
 
         t.string('ca').notNullable()
         t.string('province').nullable()
-        t.string('location').nullable()
+        t.string('locality').nullable()
         t.string('postalCode').notNullable()
         
 
@@ -35,7 +35,7 @@ exports.up = (knex, Promise) => knex.schema.createTable(`centerType`, t => {
         t.integer('createdAt').nullable()
         t.integer('updatedAt').nullable()
 
-        t.string('codCNH').notNullable().unique()
+        t.string('codCNH').nullable()
         t.string('name').notNullable()
         t.string('idRegion').notNullable().references(`region.nutsCode`) // ¿or ID?
         t.string('phone').notNullable()
@@ -58,7 +58,7 @@ exports.up = (knex, Promise) => knex.schema.createTable(`centerType`, t => {
         t.string('idCategory').notNullable().references(`categoryType.id`)
         t.string('approved').nullable()
     
-    }).createTable(`centerPetition`, t => {
+    })/*.createTable(`centerPetition`, t => {
         t.increments('id').unsigned().primary()
         t.integer('createdAt').nullable()
         t.integer('updatedAt').nullable()
@@ -68,7 +68,7 @@ exports.up = (knex, Promise) => knex.schema.createTable(`centerType`, t => {
         t.boolean('active').notNullable().defaultTo(false)
         t.integer('totalQuantity').notNullable().defaultTo(0)
     
-    }).createTable(`user`, t => {
+    })*/.createTable(`user`, t => {
         t.increments('id').unsigned().primary()
         t.integer('createdAt').nullable()
         t.integer('updatedAt').nullable()
@@ -117,7 +117,7 @@ exports.down = function(knex, Promise) {
                     .dropTable(`region`)
                     .dropTable('categoryType')
                     .dropTable(`centerType`)
-                    .dropTable(`productPetition`)
+                    //.dropTable(`productPetition`)
                     .dropTable(`user`)
                     .dropTable(`userProposal`)
                     .dropTable('centerAdmin')

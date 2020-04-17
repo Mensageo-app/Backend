@@ -32,7 +32,7 @@ module.exports = class Center extends BaseModel {
   static get jsonSchema () {
     return {
       type: 'object',
-      required: [ 'codCNH' ],
+      required: [],
 
       properties: {
         id:                      {type: 'integer'},
