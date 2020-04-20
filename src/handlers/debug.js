@@ -10,7 +10,7 @@ module.exports.debug = async (event) => {
   }
 
 
-module.exports.securedDebug = async (event) => {
+module.exports.securedDebug = async (event, context) => {
   return {
       statusCode: 200,
       headers: {

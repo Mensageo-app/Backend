@@ -2,6 +2,7 @@
 plugins:
   - serverless-plugin-split-stacks
   - serverless-aws-documentation
+  - serverless-newrelic-lambda-layers
 
 service: mensageo
 #app: your-app-name
@@ -44,7 +45,10 @@ provider:
 custom:
   userPoolName: "${self:service}-${self:provider.stage}"
   userPoolClientName: "client-${self:service}-${self:provider.stage}"
-  
+
+  newRelic:
+    accountId: "${env:NEWRELICACCOUNTID}"
+
   localstack:
     endpointFile: ./localstack.json
 
