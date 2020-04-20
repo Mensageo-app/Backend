@@ -10,10 +10,10 @@ module.exports = class Region extends BaseModel {
   static get jsonSchema () {
     return {
       type: 'object',
-      required: ['nutsCode','postalCode'],
+      required: ['ca','nutsCode','postalCode'],
 
       properties: {
-        //id:                      {type: 'integer'},
+        id:                      {type: 'integer'},
 
         createdAt:               {type: 'integer'},
         updatedAt:               {type: 'integer'},
