@@ -51,7 +51,12 @@ describe('securedDebug', () => {
                                           "Access-Control-Allow-Credentials" : true 
                                         })
       // According to the API Gateway specs, the body content must be stringified.
-      expect(JSON.parse(response.body)).toEqual( event )
+
+      let r = Object.assign(
+                            {event: event},
+                            { context: {} }
+                          )
+      expect(JSON.parse(response.body)).toEqual( r )
 
     })
   })
