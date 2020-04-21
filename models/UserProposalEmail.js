@@ -27,15 +27,7 @@ module.exports = class UserProposal extends BaseModel {
             from: `${this.tableName}.idPetition`,
             to: `${CenterPetition.tableName}.id`
           }
-        },
-        category: {
-          relation: BaseModel.HasOneRelation,
-          modelClass: CategoryType,
-          join: {
-            from: `${this.tableName}.idCategory`,
-            to: `${CategoryType.tableName}.id`
-          }
-        },
+        }
     }
   }
 
@@ -52,17 +44,10 @@ module.exports = class UserProposal extends BaseModel {
 
         idUser:                  {type: 'integer'},
         idPetition:              {type: 'integer'},
-        idCategory:              {type: 'integer'},
-        name:                    {type: 'string'},
-        img:                     {type: 'string'},
-        homologated:             {type: 'boolean'},
-        quantity:                {type: 'integer'},
-        accepted:                {type: 'boolean'},
-        acceptedDate:            {type: 'integer'},
-        rejected:                {type: 'boolean'},
-        rejectedDate:            {type: 'integer'},
-        delivered:               {type: 'boolean'},
-        deliveredDate:           {type: 'integer'},
+        subject:                 {type: 'string'},
+        body:                    {type: 'string'},
+        emailTo:                 {type: 'boolean'},
+        emailFrom:               {type: 'integer'},
         }
       }
     }
