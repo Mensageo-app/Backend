@@ -32,7 +32,7 @@ module.exports = class Center extends BaseModel {
   static get jsonSchema () {
     return {
       type: 'object',
-      required: ['codCNH','name','idRegion','phone','type'],
+      required: ['codCNH','name','idRegion','address','phone','type'],
 
       properties: {
         id:                      {type: 'integer'},
@@ -43,6 +43,7 @@ module.exports = class Center extends BaseModel {
         codCNH:                  {type: 'string', minLength: 1, maxLength: 255},
         name:                    {type: 'string', minLength: 1, maxLength: 255},
         idRegion:                {type: 'string', minLength: 1, maxLength: 255},
+        address:                 {type: 'string', minLength: 1, maxLength: 255},
         phone:                   {type: 'string', minLength: 1, maxLength: 255},
         fax:                     {type: 'string', minLength: 1, maxLength: 255},
         beds:                    {type: 'integer'},
