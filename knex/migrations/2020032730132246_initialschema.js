@@ -36,7 +36,7 @@ exports.up = (knex, Promise) => knex.schema.createTable(`centerType`, t => {
 
         t.string('codCNH').nullable()
         t.string('name').notNullable()
-        t.string('idRegion').notNullable().references(`region.nutsCode`)
+        t.string('idRegion').notNullable().references(`region.postalCode`)
         t.string('address').notNullable()
         t.string('phone').notNullable()
         t.string('fax').nullable()
