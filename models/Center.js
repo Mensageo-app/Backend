@@ -24,7 +24,7 @@ module.exports = class Center extends BaseModel {
           modelClass: Region,
           join: {
             from: `${this.tableName}.idRegion`,
-            to: `${Region.tableName}.nutsCode`
+            to: `${Region.tableName}.postalCode`
           }
         },
     }
