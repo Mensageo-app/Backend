@@ -1,0 +1,121 @@
+[
+	{
+		"name": "Mascarilla",
+		"description": "Mascarilla",
+		"img": "mascarilla.png",
+		"idCategory": 0,
+		"approved": "true"
+	},
+	{
+		"name": "Caretas/gafas",
+		"description": "Caretas/gafas",
+		"img": "gafas.png",
+		"idCategory": 0,
+		"approved": "true"
+	},
+	{
+		"name": "Guantes",
+		"description": "Guantes",
+		"img": "guantes.png",
+		"idCategory": 0,
+		"approved": "true"
+	},
+	{
+		"name": "Trajes de protección",
+		"description": "Trajes de protección",
+		"img": "trajes.png",
+		"idCategory": 0,
+		"approved": "true"
+	},
+	{
+		"name": "Gel desinfectante",
+		"description": "Gel desinfectante",
+		"img": "geles.png",
+		"idCategory": 2,
+		"approved": "true"
+	},
+	{
+		"name": "Botella de etanol",
+		"description": "Botella de etanol de alto grado de pureza",
+		"img": "geles.png",
+		"idCategory": 2,
+		"approved": "true"
+	},
+	{
+		"name": "Alcohol 98º",
+		"description": "Alcohol 98º",
+		"img": "geles.png",
+		"idCategory": 2,
+		"approved": "true"
+	},
+	{
+		"name": "Teléfonos",
+		"description": "Teléfonos",
+		"img": "telefonos.png",
+		"idCategory": 3,
+		"approved": "true"
+	},
+	{
+		"name": "Tablets",
+		"description": "Tablets",
+		"img": "tablets.png",
+		"idCategory": 3,
+		"approved": "true"
+	},
+	{
+		"name": "Alimentación",
+		"description": "Solicitudes de hacer compra",
+		"img": "alimentación.png",
+		"idCategory": 8,
+		"approved": "true"
+	},
+	{
+		"name": "Cartas Pacientes",
+		"description": "Cartas a pacientes / gente mayor", 
+		"img": "voluntariado.png",
+		"idCategory": 8,
+		"approved": "true"
+	},
+	{
+		"name": "Material escolar",
+		"description": "Material escolar",
+		"img": "escolar.png",
+		"idCategory": 6,
+		"approved": "true"
+	},
+	{
+		"name": "Respiradores",
+		"description": "Respiradores",
+		"img": "respiradores.png",
+		"idCategory": 7,
+		"approved": "true"
+	},
+	{
+		"name": "Adaptadores respiradores",
+		"description": "adaptadtadores respiradores",
+		"img": "impresión.png",
+		"idCategory": 1,
+		"approved": "true"
+	},
+	{
+		"name": "Pomos puertas",
+		"description": "pomos puertas",
+		"img": "impresión.png",
+		"idCategory": 1,
+		"approved": "true"
+	},
+	{
+		"name": "Piezas para grifo",
+		"description": "iezas para grifo",
+		"img": "impresión.png",
+		"idCategory": 1,
+		"approved": "true"
+	},
+	{
+		"name": "Trifásico para respirador",
+		"description": "trifásico para respirador",
+		"img": "impresión.png",
+		"idCategory": 1,
+		"approved": "true"
+	}
+]

@@ -1,0 +1,55 @@
+[   {
+	    "id": 0,
+		"name": "Equipo EPI",
+		"description": "Mascarillas, caretas, guates, trajes de protección y similares",
+		"icon": "mascarilla.png"
+	},
+	{
+		"id": 1,
+		"name": "Material imprimible",
+		"description": "adaptadores respiradores, pomos puertas, piezas para grifo, trifásico para respirador, etc.",
+		"icon": "impresión.png"
+	},
+	{
+		"id": 2,
+		"name": "Materiales desinfectantes",
+		"description": "Materiales desinfectantes",
+		"icon": "geles.png"
+	},
+	{
+		"id": 3,
+		"name": "Comunicaciónes",
+		"description": "Teléfonos, tablets",
+		"icon": "comunicaciónes.png"
+	},
+	{
+		"id": 4,
+		"name": "Alimentación",
+		"description": "Solicitudes de hacer compra, etc.",
+		"icon": "alimentación.png"
+	},
+	{
+		"id": 5,
+		"name": "Otros",
+		"description": "Otros no contemplados",
+		"icon": "cartas.png"
+	},
+	{
+		"id": 6,
+		"name": "Material escolar",
+		"description": "Material escolar",
+		"icon": "escolar.png"
+	},
+	{
+		"id": 7,
+		"name": "Respiradores",
+		"description": "Respiradores",
+		"icon": "respiradores.png"
+	},
+	{
+		"id": 8,
+		"name": "Voluntariado",
+		"description": "Voluntariado",
+		"icon": "voluntariado.png"
+	}
+]

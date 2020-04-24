@@ -1,0 +1,9 @@
+export STAGE='dev'
+export NODE_ENV=$STAGE
+
+export PGHOST='mensageobackend.mensageo.org'
+export PGUSER='pguser'
+export PGPASSWORD='pgpass'
+export PGDATABASE='pgdb'
+export PGPORT='pgport'
+
