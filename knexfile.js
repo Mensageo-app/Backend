@@ -24,7 +24,7 @@ module.exports = {
     debug: true,
     client: 'sqlite3',
     connection: {
-      filename: '/.dev.db'
+      filename: '.dev.db'
     },
     useNullAsDefault: true,
     migrations: {
