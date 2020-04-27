@@ -46,7 +46,7 @@ module.exports = class UserProposal extends BaseModel {
         idPetition:              {type: 'integer'},
         subject:                 {type: 'string'},
         body:                    {type: 'string'},
-        emailTo:                 {type: 'boolean'},
+        emailTo:                 {type: 'string'},
         emailFrom:               {type: 'integer'},
         }
       }

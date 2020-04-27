@@ -1,0 +1,32 @@
+[
+    {
+    "idUser":12       ,              
+    "idPetition":7   ,
+    "idCategory":3   ,
+    "name":"MasK-FFTP2"         ,
+    "img":"adsads"          ,
+    "homologated":true  ,
+    "quantity":150     ,
+    "accepted":true     ,
+    "acceptedDate":20200427 ,
+    "rejected":false     ,
+    "rejectedDate":0 ,
+    "delivered":false    ,
+    "deliveredDate":0
+    }
+    ,{
+        "idUser":17       ,              
+        "idPetition":79  ,
+        "idCategory":2   ,
+        "name":"Gloves"         ,
+        "img":"erefr"          ,
+        "homologated":false  ,
+        "quantity":30     ,
+        "accepted":false     ,
+        "acceptedDate":0 ,
+        "rejected":true     ,
+        "rejectedDate":0 ,
+        "delivered":true    ,
+        "deliveredDate":20200428
+        }
+]

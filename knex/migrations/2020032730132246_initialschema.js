@@ -108,6 +108,17 @@ exports.up = (knex, Promise) => knex.schema.createTable(`centerType`, t => {
         t.integer('idUser').notNullable().references(`user.id`)
         t.integer('idCenter').notNullable().references(`center.id`)
         t.integer('adminLevel').notNullable().defaultTo(0)
+    }).createTable(`userProposalEmail`, t => {
+        t.increments('id').unsigned().primary()
+        t.integer('createdAt').nullable()
+        t.integer('updatedAt').nullable()
+
+        t.integer('idUser').notNullable()
+        t.integer('idPetition').notNullable()
+        t.string('subject').notNullable()
+        t.string('body').notNullable()
+        t.string('emailTo').notNullable()
+        t.integer('emailFrom').notNullable()
     })
     
 
