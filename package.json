@@ -18,7 +18,7 @@
     "lodash": "^4.17.11",
     "objection": "^1.6.9",
     "objection-find": "^1.6.5",
-    "pg": "^7.11.0",
+    "pg": "^8.18.0",
     "pg-hstore": "^2.3.3"
   },
   "devDependencies": {
